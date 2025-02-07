@@ -1,4 +1,4 @@
-import Pizza from "@/components/pizzas/Item";
+import Pizza from "@/components/Pizzas/Item";
 import { Suspense } from "react";
 
 async function PaginaPizza({ params }) {

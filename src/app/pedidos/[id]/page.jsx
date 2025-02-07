@@ -1,4 +1,4 @@
-import Pedido from "@/components/pedidos/Item";
+import Pedido from "@/components/Pedidos/Item";
 import { Suspense } from "react";
 
 async function PaginaPedido({ params }) {

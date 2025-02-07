@@ -1,20 +1,20 @@
 import Modal from "@/components/Modal";
-import { obtenerPedidos } from "@/lib/data";
+import { obtenerPedidos, obtenerRepartidores } from "@/lib/data";
 import PedidoInsertar from "./Insertar";
 import PedidoModificar from "./Modificar";
 import PedidoEliminar from "./Eliminar";
 import Link from "next/link";
 
-async function Pedidos() {
+export default async function Pedidos() {
     const pedidos = await obtenerPedidos()
-
+    const repartidores = await obtenerRepartidores()
 
     return (
 
         <div>
 
             <Modal openElement={<p className="inline border-2 border-black">Insertar pedido</p>}>
-                <PedidoInsertar />
+                <PedidoInsertar repartidores={repartidores} />
             </Modal>
 
             {
@@ -25,15 +25,15 @@ async function Pedidos() {
                                 {pedido.nombreCliente}
                             </Link>
                             <p>{pedido.direccionCliente}</p>
-                            <p>{pedido.fecha_y_hora}</p>
+                            <p>{pedido.fecha_y_hora.toLocaleDateString()}</p>
                         </div>
 
                         <Modal openElement={<p className="inline border-2 border-black">Modificar</p>}>
-                            <PedidoModificar pedido={pedido} />
+                            <PedidoModificar pedido={pedido} repartidores={repartidores}/>
                         </Modal>
 
                         <Modal openElement={<p className="inline border-2 border-black">Eliminar</p>}>
-                            <PedidoEliminar pedido={pedido} />
+                            <PedidoEliminar pedido={pedido} repartidores={repartidores} />
                         </Modal>
 
                         <hr />
@@ -47,4 +47,3 @@ async function Pedidos() {
     );
 }
 
-export default Pedidos;

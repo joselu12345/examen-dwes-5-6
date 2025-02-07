@@ -4,7 +4,7 @@ function PedidoModificar({ pedido }) {
     return (
         <form action={modificarPedido}>
             <input type="hidden" name="id" defaultValue={pedido.id} />
-            <input name='fecha_y_hora' defaultValue={pedido.fecha_y_hora} />
+            <input type='date' defaultValue={pedido.fecha_y_hora.toISOString().split('T')[0]} />
             <input name='nombreCliente' defaultValue={pedido.nombreCliente} />
             <input name='direccionCliente' defaultValue={pedido.direccionCliente} />            
 

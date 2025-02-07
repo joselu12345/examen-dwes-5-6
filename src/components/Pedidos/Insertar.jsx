@@ -1,22 +1,25 @@
 import { insertarPedido } from "@/lib/actions";
 
-function PedidoInsertar() {
+
+function PedidoInsertar({repartidores}) {
     return (
         <form action={insertarPedido}>            
-            <input name="fecha_y_hora" placeholder="fecha_y_hora" />
+            <input name="fecha_y_hora" type='date' />
             <input name="nombreCliente" placeholder="nombreCliente" />
             <input name="direccionCliente" placeholder="direccionCliente" />
 
-            {/* {
-                estudiantes.map(estudiante =>
-                    <label key={estudiante.id} className="block">
+            <select name="repartidorId">
+            {
+                repartidores.map(repartidor =>
+                    <label key={repartidor.id} className="block">
                         <input
                             type='checkbox'                            
-                            value={estudiante.nombre} />
-                        {estudiante.nombre}
+                            value={repartidor.nombre} />
+                        {repartidor.nombre}
                     </label>
                 )
-            } */}
+            }
+            </select>
 
             <button className="border-2 border-black">Insertar pedido</button>
         </form>
